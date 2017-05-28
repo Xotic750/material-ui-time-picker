@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import injectTapEventPlugin from 'react-tap-event-plugin';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import TimePicker from './TimePicker';
@@ -7,30 +7,30 @@ import TimePicker from './TimePicker';
 // http://stackoverflow.com/a/34015469/988941
 injectTapEventPlugin();
 
-class App extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      time: undefined,
-    };
-  }
+const App = () => {
+  const date = Date.now();
 
-  handleOnChange(event, time) {
-    console.log('time', time);
-    this.setState({ time });
-  }
-
-  render() {
-    return (
+  return (
+    <div>
+      <h3>Full</h3>
       <MuiThemeProvider>
         <TimePicker
-          onChange={(event, value) => this.handleOnChange(event, value)}
-          value={Date.now()}
+          onChange={(event, value) => console.log('time', value)}
+          value={date}
           zDepth={1}
         />
       </MuiThemeProvider>
-    );
-  }
-}
+      <h3>Mini</h3>
+      <MuiThemeProvider>
+        <TimePicker
+          onChange={(event, value) => console.log('time', value)}
+          value={date}
+          zDepth={1}
+          mini
+        />
+      </MuiThemeProvider>
+    </div>
+  );
+};
 
 export default App;
