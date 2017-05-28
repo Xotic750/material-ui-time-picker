@@ -1,0 +1,33 @@
+{
+  "presets": [
+    ["env", {
+      "targets": {
+        "browsers": ["last 2 versions"],
+        "node": 6
+      },
+      "useBuiltIns": true,
+      "spec": true,
+      "modules": "commonjs",
+      "debug": false
+    }],
+    "react",
+    "react-boilerplate"
+  ],
+  "plugins": [
+    "add-module-exports",
+    "transform-exponentiation-operator",
+    ["transform-class-properties", { "spec": true }],
+    ["transform-es2015-classes", { "loose": true }],
+    ["transform-object-rest-spread", { "useBuiltIns": true }]
+  ],
+  "env": {
+    "production": {
+      "presets": ["react-optimize"],
+      "plugins": []
+    },
+    "development": {
+      "presets": [],
+      "plugins": ["react-hot-loader/babel"]
+    }
+  }
+}
